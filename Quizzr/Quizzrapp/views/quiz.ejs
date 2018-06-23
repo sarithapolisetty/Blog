@@ -1,0 +1,24 @@
+<%- include("./partials/header") %>
+<h1>Welcome <%= UserName %></h1>
+<h2>GudLuck For Your Quiz</h2>
+<form action="/quiz" method="POST">
+ <ol>
+<% QuizQuestions.forEach(ques => { %>
+<li>
+<h3><%= ques.question %></h3>
+<% for(let i=0; i<ques.choices.length; i++) {%>
+<input type=<%= ques.type %> name=<%= ques.id %>
+value=<%= ques.choices[i] %> 
+id=<%= ques.id %>_<%= ques.choices[i] %>>
+<label for=<%= ques.id %>_<%= ques.choices[i] %>>
+<%= ques.choices[i] %>
+</label>
+<br>
+<% } %>
+</li>
+<% }) %>
+</ol>
+<input type="submit" value="Submit"> 
+
+<%- include("./partials/footer") %>
+
