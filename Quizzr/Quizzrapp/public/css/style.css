@@ -1,0 +1,31 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-image:url("https://www.123freevectors.com/wp-content/original/14399-light-orange-background-design.jpg");
+    }
+
+a {
+  color: #00B7FF;
+}
+
+.Welcome{
+  text-align: center;
+  font-weight: bold;
+}
+h1{
+  color:#00B7FF;
+  text-align: center;
+   font-style: italic;
+}
+h2{
+  color:#00B7FF;
+  text-align: center;
+  font-style: italic;
+}
+ol,li{
+  font-size:20px;
+  color:grey;
+  font-style:bold;
+}
+
+
