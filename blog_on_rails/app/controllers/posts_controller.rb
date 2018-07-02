@@ -14,10 +14,12 @@ class PostsController < ApplicationController
     end
 
     def show
+        @comment = Comment.new
+        @comments = @post.comments.order(created_at: :desc)
     end
 
     def index
-        @posts = Post.order(created_at: :DESC)
+        @posts = Post.order(created_at: :desc)
     end
 
     def destroy
