@@ -1,0 +1,22 @@
+<div class="show">
+  <h1><%= @post.title %></h1>
+  <p><%= @post.body %></p>
+  <div class="small-font">
+    Posted <%= time_ago_in_words(@post.created_at) %> ago
+  </div>
+  <br>
+  <div>
+    <button type="button" class="btn btn-outline-primary" btn-sm">
+    <%= link_to "Edit", 
+    edit_post_path(@post) %>
+    </button>
+    <button type="button" class="btn btn-outline-primary" btn-sm">
+      <%= link_to( "Delete", 
+      post_path(@post), 
+      method: :delete,
+      data: 
+      { confirm: "Are you sure?" } 
+      ) %>
+    </button>
+  </div>
+  <br>
