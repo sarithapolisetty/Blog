@@ -21,6 +21,9 @@
               <li class="nav-item">
                 <a class="nav-link" href="/posts/new">NEW POST</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/users/new">SIGN UP</a>
+              </li>
             </ul>
           </div>     
 </nav>
@@ -29,6 +32,8 @@
  <%= link_to '', posts_path %>
   
  <%= link_to '', new_post_path %>
+
+ <%= link_to('', root_path) %>
   <%= yield %>
   </body>
 </html>
