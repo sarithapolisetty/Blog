@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 PASSWORD = "moral"
+
 Comment.delete_all
 Post.delete_all
 User.delete_all
@@ -37,7 +38,7 @@ puts Cowsay.say "Created #{users.count}users", :dragon
         user: users.sample
     })
     if p.valid?
-    rand(0..10).times do
+    rand(1..10).times do
       Comment.create(
         body: Faker::Matz.quote,
         post: p,

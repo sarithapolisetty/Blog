@@ -5,6 +5,10 @@
     Posted <%= time_ago_in_words(@post.created_at) %> ago
   </div>
   <br>
+  <div class="small-font">
+   last edited <%= time_ago_in_words(@post.updated_at) %>
+  </div>
+  <br>
   <% if user_signed_in? %>
   <div>
     <button type="button" class="btn btn-outline-primary" btn-sm">

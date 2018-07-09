@@ -31,27 +31,27 @@
           </div>     
 </nav>
  <body>
- 
+ <%= link_to '', root_path %>
  <%= link_to '', posts_path %>
-   <% if user_signed_in? %>
+ <% if user_signed_in? %>
  <%= link_to '', new_post_path %>
  <% end %>
  <% if current_user.present? %>
  <br>
-    <div class="hi">Hi, <%= current_user.name %></div>
+    <div class="hi">Hi, <%= link_to(current_user.name, edit_user_path(current_user.id)) %></div>
     <button type="button"class="btn btn-outline-success" btn-sm">
     <%= link_to(
           'SIGN OUT',
           session_path,
-          method: :delete
+          method: :delete,
         ) %>  
         </button>
    <% else %>
 
- <%= link_to('', root_path) %>
+ <%= link_to('', new_session_path) %>
 
-<%= link_to '', new_session_path %>
-  <% end %>
+<%= link_to '', new_user_path %>
+ <% end %>
  
  <br>
  <div class="container-fluid">
@@ -59,7 +59,8 @@
         <div class="alert alert-<%= type %> alert-dismissible fade show">
           <%= message %>
         </div>
-      <% end %>
+        <% end %>
+   
   <%= yield %>
   </body>
 </html>

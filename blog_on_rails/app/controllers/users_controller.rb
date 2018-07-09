@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  before_action :find_user
+#   before_action :authorize_user!, only: [:edit, :update]
+
     def new
         @user = User.new
     end
@@ -11,7 +14,25 @@ class UsersController < ApplicationController
             render :new
         end
     end
+    def edit
+    end
+    def update
+      if @user.update edit_user_params
+      flash[:success] = "Changes saved"
+      else
+      flash[:alert] = @user.errors.full_messages.join(", ")
+      end
+        redirect_to edit_user_path(@user)
+    end
     private
+
+    def find_user
+    @user = User.find params[:id] if params[:id].present?
+    end
+
+    def edit_user_params
+    params.require(:user).permit(:name, :email)
+    end
     def user_params
         params.require(:user).permit(
          :name, 
