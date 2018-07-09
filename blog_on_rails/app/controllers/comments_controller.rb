@@ -1,13 +1,16 @@
 class CommentsController < ApplicationController
+    before_action :authenticate_user!
     before_action :find_comment, only: [:destroy]
+    
 
     def create
       @post = Post.find(params[:post_id])
       @comment = Comment.new(comment_params)
       @comment.post = @post
+      @comment.user = current_user
 
       if @comment.save
-        redirect_to @post
+        redirect_to post_path(@post)
       else
         @comments = @post.comments.order(created_at: :desc)
         render 'posts/show'

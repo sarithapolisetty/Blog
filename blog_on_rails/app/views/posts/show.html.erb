@@ -5,6 +5,7 @@
     Posted <%= time_ago_in_words(@post.created_at) %> ago
   </div>
   <br>
+  <% if user_signed_in? %>
   <div>
     <button type="button" class="btn btn-outline-primary" btn-sm">
     <%= link_to "Edit", 
@@ -19,6 +20,7 @@
       ) %>
     </button>
   </div>
+  <% end %>
   <br>
   <h4> Comment </h4>
   
@@ -42,8 +44,9 @@
     <div>
       <div> <%= comment.body %> </div>
       <div class="small font">
-        Posted <%= time_ago_in_words(comment.created_at) %> ago
+        Commented <%= time_ago_in_words(comment.created_at) %> ago
         ∙
+        <% if user_signed_in? %>
         <%= link_to(
           "Delete",
           post_comment_path(@post.id,comment.id),
@@ -52,6 +55,7 @@
             confirm: 'Are you sure?' 
             } 
             )%>
+            <% end %>
       </div>
     </div>
   <% end %>

@@ -24,20 +24,46 @@
               <li class="nav-item">
                 <a class="nav-link" href="/users/new">SIGN UP</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/session/new">SIGN IN</a>
+              </li>
             </ul>
           </div>     
 </nav>
- <%= link_to '', root_path %>
-  
+ <body>
+ 
  <%= link_to '', posts_path %>
-  
+   <% if user_signed_in? %>
  <%= link_to '', new_post_path %>
+ <% end %>
+ <% if current_user.present? %>
+ <br>
+    <div class="hi">Hi, <%= current_user.name %></div>
+    <button type="button"class="btn btn-outline-success" btn-sm">
+    <%= link_to(
+          'SIGN OUT',
+          session_path,
+          method: :delete
+        ) %>  
+        </button>
+   <% else %>
 
  <%= link_to('', root_path) %>
+
+<%= link_to '', new_session_path %>
+  <% end %>
+ 
+ <br>
+ <div class="container-fluid">
+      <% flash.each do |type, message| %>
+        <div class="alert alert-<%= type %> alert-dismissible fade show">
+          <%= message %>
+        </div>
+      <% end %>
   <%= yield %>
   </body>
 </html>
 
 
 
-          
+         

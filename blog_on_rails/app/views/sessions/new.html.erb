@@ -1,0 +1,17 @@
+<br>
+<h1>Sign In</h1>
+<%= form_for :session, url: session_path do |f| %>
+  <div class="session">
+  <div>
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+  </div>
+<br>
+  <div>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </div>
+<br>
+  <%= f.submit "Sign In", class: "btn btn-outline-primary" %>
+  </div>
+<% end %>
