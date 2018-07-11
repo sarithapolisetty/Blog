@@ -38,7 +38,7 @@ puts Cowsay.say "Created #{users.count}users", :dragon
         user: users.sample
     })
     if p.valid?
-    rand(1..10).times do
+    rand(0..10).times do
       Comment.create(
         body: Faker::Matz.quote,
         post: p,

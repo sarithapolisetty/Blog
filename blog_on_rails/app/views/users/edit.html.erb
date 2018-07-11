@@ -16,6 +16,9 @@
     <%= f.email_field :email %>
   </div>
   <br>
-  <%= f.submit "Update User",  class: "btn btn-outline-primary"%>
+  <%= f.submit "Edit User",  class: "btn btn-outline-primary"%>
+  <span>
+    <%= link_to('Change Password', pw_edit_user_path, class:"btn btn-outline-primary") %>
+  </span>
 <% end %>
 
