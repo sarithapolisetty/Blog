@@ -1,37 +1,24 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery with: :exception
-    private
+  private
 
-    def current_user
-        if session[:user_id].present?
-            @current_user ||= User.find_by(id: session[:user_id])
-        end
+  def current_user
+    if session[:user_id].present?
+      @current_user ||= User.find_by(id: session[:user_id])
     end
+  end
 
-    helper_method :current_user
+  helper_method :current_user
 
-      def user_signed_in?
-        current_user.present?
-      end
+  def user_signed_in?
+    current_user.present?
+  end
 
-    helper_method :user_signed_in?
+  helper_method :user_signed_in?
 
-    def authenticate_user!
-           unless current_user.present?
-             flash[:danger] = "You must sign in or sign up first!"
-             redirect_to root_path
-           end
-        end
+  def authenticate_user!
+    unless current_user.present?
+      flash[:danger] = "You must sign in or sign up first!"
+      redirect_to root_path
     end
-
-
-   
-      
- 
-  
-  
-  
-
- 
-     
-   
+  end
+end

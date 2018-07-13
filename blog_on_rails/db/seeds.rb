@@ -14,7 +14,8 @@ User.delete_all
 associate_user = User.create(
   name: "sarithapolisetty",
   email: "sp@gmail.com",
-  password: PASSWORD
+  password: PASSWORD,
+  admin: true
 )
 
 10.times do

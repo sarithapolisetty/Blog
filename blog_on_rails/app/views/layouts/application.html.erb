@@ -33,12 +33,12 @@
  <body>
  <%= link_to '', root_path %>
  <%= link_to '', posts_path %>
- <% if user_signed_in? %>
+ <% if user_signed_in? %> 
  <%= link_to '', new_post_path %>
- <% end %>
+  <% end %>  
  <% if current_user.present? %>
  <br>
-    <div class="hi">Hi, <%= link_to(current_user.name, edit_user_path(current_user.id)) %></div>
+    <div class="hi">Hi, <%= link_to(current_user.name,edit_user_path(current_user.id)) %></div>
     <button type="button"class="btn btn-outline-success" btn-sm">
     <%= link_to(
           'SIGN OUT',
@@ -46,7 +46,7 @@
           method: :delete,
         ) %>  
         </button>
-   <% else %>
+  <% else %>
 
  <%= link_to('', new_session_path) %>
 

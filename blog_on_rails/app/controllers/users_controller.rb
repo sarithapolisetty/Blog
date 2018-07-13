@@ -1,9 +1,6 @@
 class UsersController < ApplicationController
+    
     before_action :find_user
-#   before_action :authorize_user!, only: [:edit, :update]
-    before_action :authenticate_user!
-
-
     def new
         @user = User.new
     end
@@ -23,12 +20,14 @@ class UsersController < ApplicationController
     end
 
     def update
-      if @user.update edit_user_params
-      flash[:success] = "Changes saved"
+      if @user.update(edit_user_params)
+        redirect_to root_path
+        flash[:success] = "Changes saved"
       else
       flash[:alert] = @user.errors.full_messages.join(", ")
+      render :edit
       end
-        redirect_to edit_user_path(@user)
+       
     end
 
     def pw_edit
@@ -57,6 +56,7 @@ class UsersController < ApplicationController
 
     def find_user
     @user = User.find params[:id] if params[:id].present?
+    
     end
 
     def edit_user_params
