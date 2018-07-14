@@ -1,0 +1,24 @@
+<h1>Edit Users</h1>
+<%= form_for @user do |f| %>
+  <% if @user.errors.any? %>
+    <p>
+      <%= @user.errors.full_messages.join(', ') %>
+    </p>
+  <% end %>
+
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name%>
+  </div>
+  <br>
+  <div>
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+  </div>
+  <br>
+  <%= f.submit "Edit User",  class: "btn btn-outline-primary"%>
+  <span>
+    <%= link_to('Change Password', pw_edit_user_path, class:"btn btn-outline-primary") %>
+  </span>
+<% end %>
+

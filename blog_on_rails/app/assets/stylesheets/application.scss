@@ -16,3 +16,52 @@
 
  @import "bootstrap";
  @import "main";
+
+ body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-image:url("https://legacy-help.pro.photo/wp-content/uploads/2010/03/elegant_blog_bg-580x386.jpg");
+}
+.row{
+    padding: 50px;
+    background-color:lightlategrey;
+}
+.new_post{
+    padding: 10px;
+    margin: 10px;
+}
+.edit_post{
+    padding: 20px;
+}
+.show{
+    padding: 30px;
+}
+.new_user{
+    padding: 10px;
+    margin: 10px;
+    text-align:center;
+}
+h1{
+    text-align: center;
+    color:lightcoral;
+}
+.session{
+    padding: 10px;
+    margin: 10px;
+    text-align:center;
+
+}
+.hi{
+    padding: 10px;
+    margin: 10px;
+    text-transform: capitalize;
+
+}
+.button{
+    padding: 10px;
+    margin: 10px;
+}
+
+  
+    
+
+

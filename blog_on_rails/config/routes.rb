@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
- get "/", to: 'posts#index', as: :root
- resources :posts do
-    resources :comments, only: [:create, :destroy]
+  resource :session, only: [:new, :create, :destroy]
+  resources :users, only: [:new, :create, :edit, :update] do
+   get "pw_edit", on: :member
+   patch 'pw_update', on: :member 
+  end
+  get "/", to: 'posts#index', as: :root
+  resources :posts do
+  resources :comments, only: [:create, :destroy]
  end
 #  get "/posts/new",         to: "posts#new",      as: :new_post
 #  post "/posts",            to: "posts#create",   as: :posts

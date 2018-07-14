@@ -1,15 +1,26 @@
 <div class="show">
   <h1><%= @post.title %></h1>
   <p><%= @post.body %></p>
+  <p>By <%= @post.user&.name || "[Deleted]" %></p>
   <div class="small-font">
     Posted <%= time_ago_in_words(@post.created_at) %> ago
   </div>
   <br>
+  <div class="small-font">
+   last edited <%= time_ago_in_words(@post.updated_at) %>
+  </div>
+  <br>
+  
+  <% if user_signed_in? %>
   <div>
+  <% if can?(:edit, @post) %>
     <button type="button" class="btn btn-outline-primary" btn-sm">
     <%= link_to "Edit", 
     edit_post_path(@post) %>
     </button>
+    <% end %>
+    <div>
+    <% if can?(:delete, @post) %>
     <button type="button" class="btn btn-outline-primary" btn-sm">
       <%= link_to( "Delete", 
       post_path(@post), 
@@ -17,7 +28,11 @@
       data: 
       { confirm: "Are you sure?" } 
       ) %>
+       
     </button>
+    <% end %>
+  </div>
+  <% end %>
   </div>
   <br>
   <h4> Comment </h4>
@@ -34,15 +49,19 @@
        placeholder: "What's on your mind?"
        ) %>
     </div>
+    <br>
        <%= f.submit "Submit",  class: "btn btn-outline-primary" %>
   <% end %>
   <br>  
   <% @comments.each do |comment| %>
     <div>
       <div> <%= comment.body %> </div>
+      <span> <%= comment.user&.name || "[DELETED]" %></span>
       <div class="small font">
-        Posted <%= time_ago_in_words(comment.created_at) %> ago
+     
+        Commented <%= time_ago_in_words(comment.created_at) %> ago
         ∙
+        <% if user_signed_in? && can?(:delete, comment) %>
         <%= link_to(
           "Delete",
           post_comment_path(@post.id,comment.id),
@@ -51,6 +70,7 @@
             confirm: 'Are you sure?' 
             } 
             )%>
+            <% end %>
       </div>
     </div>
   <% end %>
